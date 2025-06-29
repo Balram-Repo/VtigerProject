@@ -29,7 +29,6 @@ public class ToCreateContactTest extends BaseClass {
 		newContactPage.getLastnameTextField().sendKeys(LASTNAME);
 		newContactPage.getSaveButton().click();
 
-//		Assert.fail(); // To fail a Test Script
 		ContactInformationPage informationPage = new ContactInformationPage(driver);
 		String lastname = informationPage.getHeaderElement().getText();
 		Assert.assertTrue(lastname.contains(LASTNAME));
