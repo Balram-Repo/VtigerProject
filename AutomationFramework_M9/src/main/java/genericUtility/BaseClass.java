@@ -10,9 +10,10 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import elementRepository.HomePage;
 import elementRepository.LoginPage;
@@ -30,11 +31,11 @@ public class BaseClass {
 		Reporter.log("Database Connection Established...", true);
 	}
 
-//	@Parameters("browser")
-//	@BeforeTest
-	@BeforeClass(groups = { "Smoke", "Regression" })
-	public void beforeClassConfig(/*String BROWSER */) throws IOException {
-		String BROWSER = propertyFileUtil.propertyFileData("browser");
+	@Parameters("browser")
+	@BeforeTest
+//	@BeforeClass(groups = { "Smoke", "Regression" })
+	public void beforeClassConfig(String BROWSER ) throws IOException {
+//		String BROWSER = propertyFileUtil.propertyFileData("browser");
 		String URL = propertyFileUtil.propertyFileData("url");
 		if (BROWSER.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
